@@ -1,12 +1,13 @@
-{% macro modal(title, btn_label=None, btn_class="btn-primary") %}
+{% macro modal(title, label=None, btn_label=None, btn_class="btn-primary") %}
 {% set key = title.replace(' ', '-').lower() %}
 {% set btn_label = btn_label or title %}
+{% set label = label or title %}
 <div class="modal fade" id="{{key}}-dialog" tabindex="-1" role="dialog" aria-labelledby="{{key}}-label" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
-        <h4 class="modal-title" id="{{key}}-label">{{title}}</h4>
+        <h4 class="modal-title" id="{{key}}-label">{{label}}</h4>
       </div>
       <div class="modal-body">
         {{ caller() }}

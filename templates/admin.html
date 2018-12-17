@@ -49,7 +49,7 @@
         {%- if u.last_activity -%}
         {{ u.last_activity.isoformat() + 'Z' }}
         {%- else -%}
-        Never
+        从不
         {%- endif -%}
       </td>
       <td class="server-col col-sm-2 text-center">
@@ -76,20 +76,20 @@
   </table>
 </div>
 
-{% call modal('删除用户', btn_class='btn-danger delete-button') %}
+{% call modal('Delete User','删除用户', '提交', btn_class='btn-danger delete-button') %}
   您确定要删除<span class="delete-username">用户</span>?
   此操作无法撤消。
 {% endcall %}
 
-{% call modal('Stop All Servers', btn_label='Stop All', btn_class='btn-danger stop-all-button') %}
+{% call modal('Stop All Servers', '停止全部服务器', btn_label='全部停止', btn_class='btn-danger stop-all-button') %}
 您确定要停止所有的服务器？核心以及未保存的数据都将随之丢失。
 {% endcall %}
 
-{% call modal('Start All Servers', btn_label='Start All', btn_class='btn-primary start-all-button') %}
+{% call modal('Start All Servers', '启动全部服务器', btn_label='全部启动', btn_class='btn-primary start-all-button') %}
 您确定要启动所有服务器吗？这将占用大量的系统资源。
 {% endcall %}
 
-{% call modal('Shutdown Hub', btn_label='Shutdown', btn_class='btn-danger shutdown-button') %}
+{% call modal('Shutdown Hub', '关闭JupyterHub', btn_label='关闭', btn_class='btn-danger shutdown-button') %}
   您确定要关闭Hub吗？
   你同样可以选择暂离代理服务（或者关闭独立服务器）勾选下面的选择框:
   <div class="checkbox">
@@ -104,8 +104,8 @@
   </div>
 {% endcall %}
 
-{% macro user_modal(name, multi=False) %}
-{% call modal(name, btn_class='btn-primary save-button') %}
+{% macro user_modal(name, label, btnlabel, multi=False) %}
+{% call modal(name, label, btn_label=btnlabel, btn_class='btn-primary save-button') %}
 <div class="form-group">
   <{%- if multi -%}
     textarea
@@ -124,9 +124,9 @@
 {% endcall %}
 {% endmacro %}
 
-{{ user_modal('Edit User') }}
+{{ user_modal('Edit User', '编辑用户', '提交') }}
 
-{{ user_modal('Add Users', multi=True) }}
+{{ user_modal('Add Users', '增加用户', '提交', multi=True) }}
 
 {% endblock %}
 

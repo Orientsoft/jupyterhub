@@ -66,10 +66,10 @@ require(["jquery", "bootstrap", "moment", "jhapi", "utils"], function ($, bs, mo
         var el = $(this);
         var row = get_row(el);
         var user = row.data('user');
-        el.text("stopping...");
+        el.text("停止...");
         api.stop_server(user, {
             success: function () {
-                el.text('stop server').addClass('hidden');
+                el.text('停止服务').addClass('hidden');
                 row.find('.access-server').addClass('hidden');
                 row.find('.start-server').removeClass('hidden');
             }
@@ -98,10 +98,10 @@ require(["jquery", "bootstrap", "moment", "jhapi", "utils"], function ($, bs, mo
             var el = $(this);
             var row = get_row(el);
             var user = row.data('user');
-            el.text("starting...");
+            el.text("启动...");
             api.start_server(user, {
                 success: function () {
-                    el.text('start server').addClass('hidden');
+                    el.text('启动服务').addClass('hidden');
                     row.find('.stop-server').removeClass('hidden');
                     row.find('.access-server').removeClass('hidden');
                 }

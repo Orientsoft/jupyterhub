@@ -9,13 +9,13 @@
   <div class="row">
     <div class="text-center">
       {% if user.running %}
-      <a id="stop" role="button" class="btn btn-lg btn-danger">Stop My Server</a>
+      <a id="stop" role="button" class="btn btn-lg btn-danger">停止我的服务</a>
       {% endif %}
       <a id="start" role="button" class="btn btn-lg btn-primary" href="{{ url }}">
       {% if not user.active %}
-      Start
+      启动
       {% endif %}
-        My Server
+      我的服务器
       </a>
     </div>
   </div>

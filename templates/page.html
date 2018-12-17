@@ -5,14 +5,14 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
         <h4 class="modal-title" id="{{key}}-label">{{title}}</h4>
       </div>
       <div class="modal-body">
         {{ caller() }}
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
         <button type="button" class="btn {{btn_class}}" data-dismiss="modal" data-dismiss="modal">{{btn_label}}</button>
       </div>
     </div>
@@ -27,7 +27,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>{% block title %}JupyterHub{% endblock %}</title>
+    <title>{% block title %}Swufelab实验环境{% endblock %}</title>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -87,8 +87,8 @@
 
 <noscript>
   <div id='noscript'>
-    JupyterHub requires JavaScript.<br>
-    Please enable it to proceed.
+    Swufelab依赖JavaScript.<br>
+    需要打开Javascript选项才能继续.
   </div>
 </noscript>
 
@@ -96,9 +96,9 @@
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-        <span id="jupyterhub-logo" class="pull-left"><a href="{{logo_url or base_url}}"><img src='{{base_url}}logo' alt='JupyterHub' class='jpy-logo' title='Home'/></a></span>
+        <span id="jupyterhub-logo" class="pull-left"><a href="{{logo_url or base_url}}"><img src="{{static_url("images/jupyter_w.png")}}"  alt='Swufelab' class='jpy-logo' title='首页'/></a></span>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#thenavbar" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
+          <span class="sr-only">切换导航</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -109,10 +109,10 @@
         {% if user %}
         <ul class="nav navbar-nav">
           {% block nav_bar_left_items %}
-            <li><a href="{{base_url}}home">Home</a></li>
-            <li><a href="{{base_url}}token">Token</a></li>
+            <li><a href="{{base_url}}home">首页</a></li>
+            <li><a href="{{base_url}}token">令牌</a></li>
             {% if user.admin %}
-            <li><a href="{{base_url}}admin">Admin</a></li>
+            <li><a href="{{base_url}}admin">管理员</a></li>
             {% endif %}
           {% endblock %}
         </ul>
@@ -123,9 +123,9 @@
               {% block login_widget %}
                 <span id="login_widget">
                   {% if user %}
-                    <a id="logout" role="button" class="navbar-btn btn-sm btn btn-default" href="{{logout_url}}"> <i aria-hidden="true" class="fa fa-sign-out"></i> Logout</a>
+                    <a id="logout" role="button" class="navbar-btn btn-sm btn btn-default" href="{{logout_url}}"> <i aria-hidden="true" class="fa fa-sign-out"></i> 注销</a>
                   {% else %}
-                    <a id="login" role="button" class="btn-sm btn navbar-btn btn-default" href="{{login_url}}">Login</a>
+                    <a id="login" role="button" class="btn-sm btn navbar-btn btn-default" href="{{login_url}}">登录</a>
                   {% endif %}
                 </span>
               {% endblock %}
@@ -155,7 +155,7 @@
 
 {% call modal('Error', btn_label='OK') %}
   <div class="ajax-error">
-    The error
+    后台出错了
   </div>
 {% endcall %}
 
